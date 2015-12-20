@@ -14,4 +14,6 @@
   (testing "Pass if equals exactly"
     (is (approximately== 1 1))
   (testing "Pass if difference is less than 1%"
-    (is (approximately== 101 102)))))
+    (let [actual 101
+          expected 102]
+    (is (approximately== actual expected))))))
