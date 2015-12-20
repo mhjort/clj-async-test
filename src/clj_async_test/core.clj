@@ -1,5 +1,16 @@
 (ns clj-async-test.core
-  (:require [clojure.test :refer [do-report assert-expr]]))
+  (:require [clojure.test :refer [do-report assert-expr]])
+  (:import [java.lang Math]))
+
+(defmethod assert-expr 'approximately== [_ form]
+  (let [[_ actual expected] form
+        diff (Math/abs (- expected actual))]
+  `(do-report {:type (if (< (/ ~diff ~expected) (/ 1 100))
+                       :pass
+                       :fail)
+               :expected ~expected
+               :actual ~actual
+               :message "Not approximately equal (max 1% difference)"})))
 
 (defmethod assert-expr 'eventually [_ form-with-keyword]
   "Asserts that given predicate is eventually true.
