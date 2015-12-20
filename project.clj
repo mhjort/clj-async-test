@@ -1,4 +1,4 @@
-(defproject clj-async-test "0.0.2"
+(defproject clj-async-test "0.0.3"
   :description "clojure.test assertions for testing asynchronous code"
   :url "https://github.com/mhjort/clj-async-test"
   :dependencies [[org.clojure/clojure "1.7.0"]]
