@@ -12,7 +12,7 @@
                            :fail)
                    :expected ~expected
                    :actual ~actual
-                   :message (str "Not approximately equal (max " accuracy "% difference)")}))))
+                   :message (str "Not approximately equal (max " ~accuracy "% difference)")}))))
 
 (defmethod assert-expr 'eventually [_ form-with-keyword]
   "Asserts that given predicate is eventually true.
