@@ -3,15 +3,16 @@
   (:import [java.lang Math]))
 
 (defmethod assert-expr 'approximately== [_ form]
-  (let [[_ actual expected] form
+  (let [[_ actual expected & {:keys [accuracy]
+                              :or {accuracy 1}}] form
         diff (gensym 'diff)]
     `(let [~diff (Math/abs (- ~expected ~actual))]
-       (do-report {:type (if (< (/ ~diff ~expected) (/ 1 100))
+       (do-report {:type (if (< (/ ~diff ~expected) (/ ~accuracy 100))
                            :pass
                            :fail)
                    :expected ~expected
                    :actual ~actual
-                   :message "Not approximately equal (max 1% difference)"}))))
+                   :message (str "Not approximately equal (max " accuracy "% difference)")}))))
 
 (defmethod assert-expr 'eventually [_ form-with-keyword]
   "Asserts that given predicate is eventually true.

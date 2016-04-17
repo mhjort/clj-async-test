@@ -12,8 +12,12 @@
 
 (deftest approximately==-function
   (testing "Pass if equals exactly"
-    (is (approximately== 1 1))
-  (testing "Pass if difference is less than 1%"
+    (is (approximately== 1 1)))
+  (testing "Pass if difference is less than default 1%"
     (let [actual 101
           expected 102]
-    (is (approximately== actual expected))))))
+      (is (approximately== actual expected))))
+  (testing "Pass if difference is less than given accuracy"
+    (let [actual 104
+          expected 100]
+      (is (approximately== actual expected :accuracy 5)))))

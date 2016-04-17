@@ -32,8 +32,14 @@ between actual and expected is less than 1%.
 (is (approximately== actual expected))
 ```
 
+You can also set the desired accuracy.
+
+```clojure
+(is (approximately== actual expected :accuracy 5))
+```
+
 ## License
 
-Copyright (C) 2015 Markus Hjort
+Copyright (C) 2015-2016 Markus Hjort
 
 Distributed under the Eclipse Public License, the same as Clojure.
