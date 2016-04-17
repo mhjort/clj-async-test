@@ -6,7 +6,7 @@ clojure.test assertions for testing asynchronous code
 Add the following to your `project.clj` `:dependencies`:
 
 ```clojure
-[clj-async-test "0.0.3"]
+[clj-async-test "0.0.4"]
 ```
 
 ## Usage
